@@ -1,0 +1,89 @@
+<view class="page-shell">
+  <view class="recognition-hero glass-card">
+    <view class="hero-badge">HERB VISION</view>
+    <view class="page-title">拍照识别</view>
+    <view class="page-subtitle">
+      支持单张中药饮片或药材外观图片识别。当前会优先在本地药材库范围内识别常见单味药材，例如黄芪、当归、甘草、桂枝、白芍、茯苓、柴胡、人参、生姜、薄荷等；未配置真实视觉识别服务时，仅按文件名进行降级匹配。
+    </view>
+    <view class="chip-row whitelist-row">
+      <view class="chip">黄芪</view>
+      <view class="chip">当归</view>
+      <view class="chip">甘草</view>
+      <view class="chip">桂枝</view>
+      <view class="chip">白芍</view>
+      <view class="chip">茯苓</view>
+      <view class="chip">柴胡</view>
+      <view class="chip">人参</view>
+      <view class="chip">生姜</view>
+      <view class="chip">薄荷</view>
+    </view>
+  </view>
+
+  <view class="recognition-card glass-card">
+    <view class="section-title">识别流程</view>
+    <view class="section-desc">先上传清晰单味药材图片，再发起识别并查看候选结果。</view>
+    <view class="bullet-line">1. 拍照或从相册选择图片</view>
+    <view class="bullet-line">2. 上传到后端识别接口</view>
+    <view class="bullet-line">3. 返回候选结果并匹配药材详情</view>
+  </view>
+
+  <view class="recognition-card glass-card">
+    <view class="section-title">图片上传</view>
+    <view class="section-desc">支持 JPG / JPEG / PNG，大小不超过 5MB。</view>
+    <view wx:if="{{imageUrl}}" class="preview-wrap">
+      <image class="preview-image" src="{{imageUrl}}" mode="aspectFill"></image>
+    </view>
+    <view wx:else class="empty-preview">
+      <view class="empty-preview__title">暂未选择图片</view>
+      <view class="empty-preview__desc">建议使用单味药材、主体清晰、光线均匀的图片。</view>
+    </view>
+
+    <view class="meta-line">当前来源：{{sourceTypeLabel}}</view>
+
+    <view class="action-grid">
+      <view class="primary-button" bindtap="takePhoto">拍照上传</view>
+      <view class="outline-button" bindtap="chooseFromAlbum">从相册选择</view>
+    </view>
+
+    <view
+      class="start-button {{(!imageUrl || uploading || analyzing) ? 'start-button--disabled' : ''}}"
+      bindtap="startRecognition"
+    >
+      {{actionText}}
+    </view>
+  </view>
+
+  <view wx:if="{{statusText}}" class="status-panel">{{statusText}}</view>
+  <view wx:if="{{errorText}}" class="status-panel status-panel--error">{{errorText}}</view>
+
+  <view wx:if="{{hasResult}}" class="recognition-card glass-card">
+    <view class="section-title">识别结果</view>
+
+    <view wx:if="{{result}}" class="result-card">
+      <view class="result-card__header">
+        <view>
+          <view class="result-card__name">{{result.name}}</view>
+          <view class="result-card__alias" wx:if="{{result.alias}}">别名：{{result.alias}}</view>
+        </view>
+        <view class="result-card__confidence">{{result.confidenceText}}</view>
+      </view>
+      <view class="result-card__reason">{{result.reasonText}}</view>
+      <view class="primary-button detail-button" bindtap="viewDetail">查看药材详情</view>
+    </view>
+
+    <view wx:else class="status-panel result-empty">
+      {{unmatchedText}}
+    </view>
+
+    <view wx:if="{{candidates.length}}" class="candidate-section">
+      <view class="candidate-section__title">候选结果</view>
+      <view wx:for="{{candidates}}" wx:key="name" class="candidate-item">
+        <view class="candidate-item__main">
+          <view class="candidate-item__name">{{item.name}}</view>
+          <view class="candidate-item__confidence">{{item.confidenceText}}</view>
+        </view>
+        <view class="candidate-item__reason">{{item.reasonText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

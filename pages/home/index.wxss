@@ -1,0 +1,116 @@
+.hero {
+  position: relative;
+  padding: 36rpx 32rpx;
+  overflow: hidden;
+}
+
+.hero-topline {
+  display: inline-flex;
+  margin-bottom: 16rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 999rpx;
+  background: rgba(34, 71, 63, 0.1);
+  color: #22473f;
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+}
+
+.search-panel {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 32rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 92rpx;
+  padding: 0 28rpx;
+  border-radius: 28rpx;
+  background: rgba(255, 252, 247, 0.95);
+  font-size: 28rpx;
+}
+
+.search-action {
+  min-width: 180rpx;
+  height: 92rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #22473f 0%, #2d6257 100%);
+  color: #fff9f0;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 92rpx;
+  text-align: center;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18rpx;
+  margin-top: 24rpx;
+}
+
+.overview-card {
+  padding: 24rpx 20rpx;
+}
+
+.overview-label {
+  color: #7d766b;
+  font-size: 22rpx;
+}
+
+.overview-value {
+  margin-top: 14rpx;
+  color: #19362f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 50rpx;
+  font-weight: 700;
+}
+
+.section {
+  margin-top: 28rpx;
+}
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18rpx;
+}
+
+.entry-card {
+  min-height: 196rpx;
+  padding: 26rpx 24rpx;
+}
+
+.entry-card--forest {
+  background: linear-gradient(180deg, rgba(244, 250, 243, 0.95) 0%, rgba(232, 242, 238, 0.95) 100%);
+}
+
+.entry-card--amber {
+  background: linear-gradient(180deg, rgba(250, 245, 234, 0.98) 0%, rgba(248, 235, 212, 0.95) 100%);
+}
+
+.entry-card--mist {
+  background: linear-gradient(180deg, rgba(239, 244, 245, 0.95) 0%, rgba(231, 239, 242, 0.95) 100%);
+}
+
+.entry-card--clay {
+  background: linear-gradient(180deg, rgba(250, 241, 237, 0.95) 0%, rgba(247, 232, 223, 0.95) 100%);
+}
+
+.entry-title {
+  color: #17342d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.entry-desc {
+  margin-top: 18rpx;
+  color: #6d6a60;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+
+.feature-panel {
+  padding: 28rpx;
+}

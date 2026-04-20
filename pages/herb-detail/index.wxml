@@ -1,0 +1,32 @@
+<view class="page-shell">
+  <view wx:if="{{loading}}" class="status-panel">正在读取药材详情...</view>
+  <view wx:if="{{errorText}}" class="status-panel status-panel--error">{{errorText}}</view>
+
+  <block wx:if="{{detail}}">
+    <view class="detail-hero glass-card">
+      <view class="detail-label">中药材档案</view>
+      <view class="page-title">{{detail.name}}</view>
+      <view wx:if="{{detail.alias}}" class="page-subtitle">别名：{{detail.alias}}</view>
+    </view>
+
+    <view class="detail-card glass-card">
+      <view class="section-title">基础信息</view>
+      <view wx:if="{{detail.categoryName}}" class="detail-line">分类：{{detail.categoryName}}</view>
+      <view wx:if="{{detail.natureFlavor}}" class="detail-line">性味：{{detail.natureFlavor}}</view>
+      <view wx:if="{{detail.meridianTropism}}" class="detail-line">归经：{{detail.meridianTropism}}</view>
+    </view>
+
+    <view class="detail-card glass-card">
+      <view class="section-title">功效与主治</view>
+      <view wx:if="{{detail.efficacy}}" class="detail-line">功效：{{detail.efficacy}}</view>
+      <view wx:if="{{detail.indication}}" class="detail-line">主治：{{detail.indication}}</view>
+    </view>
+
+    <view class="detail-card glass-card">
+      <view class="section-title">用法与说明</view>
+      <view wx:if="{{detail.usageMethod}}" class="detail-line">用法用量：{{detail.usageMethod}}</view>
+      <view wx:if="{{detail.precaution}}" class="detail-line">注意事项：{{detail.precaution}}</view>
+      <view wx:if="{{detail.sourceText}}" class="detail-line">来源说明：{{detail.sourceText}}</view>
+    </view>
+  </block>
+</view>

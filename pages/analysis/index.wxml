@@ -1,0 +1,71 @@
+<view class="page-shell">
+  <view class="page-title">数据分析台</view>
+  <view class="page-subtitle">用轻量图形卡片先完成可视化展示，后续可平滑替换为 ECharts 组件。</view>
+
+  <view class="overview-grid">
+    <view class="overview-tile glass-card">
+      <view class="overview-tile__label">药材总量</view>
+      <view class="overview-tile__value">{{overview.herbCount}}</view>
+    </view>
+    <view class="overview-tile glass-card">
+      <view class="overview-tile__label">方剂总量</view>
+      <view class="overview-tile__value">{{overview.formulaCount}}</view>
+    </view>
+    <view class="overview-tile glass-card">
+      <view class="overview-tile__label">分类总量</view>
+      <view class="overview-tile__value">{{overview.categoryCount}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{errorText}}" class="status-panel status-panel--error">{{errorText}}</view>
+
+  <view class="chart-card glass-card">
+    <view class="section-title">药材功效分布</view>
+    <view class="section-desc">展示当前药材数据中高频出现的功效关键词。</view>
+    <view wx:if="{{!herbEfficacyList.length && !loading}}" class="status-panel">暂无功效统计数据</view>
+    <view wx:for="{{herbEfficacyList}}" wx:key="name" class="bar-row">
+      <view class="bar-row__header">
+        <view class="bar-row__label">{{item.name}}</view>
+        <view class="bar-row__value">{{item.value}}</view>
+      </view>
+      <view class="bar-track">
+        <view class="bar-fill bar-fill--green" style="width: {{item.percent}}%;"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="chart-card glass-card">
+    <view class="section-title">方剂分类分布</view>
+    <view class="section-desc">适合在答辩中说明系统如何支持结构化统计分析。</view>
+    <view wx:if="{{!formulaCategoryList.length && !loading}}" class="status-panel">暂无方剂分类数据</view>
+    <view wx:for="{{formulaCategoryList}}" wx:key="name" class="bar-row">
+      <view class="bar-row__header">
+        <view class="bar-row__label">{{item.name}}</view>
+        <view class="bar-row__value">{{item.value}}</view>
+      </view>
+      <view class="bar-track">
+        <view class="bar-fill bar-fill--gold" style="width: {{item.percent}}%;"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="chart-card glass-card">
+    <view class="section-title">高频药材排行</view>
+    <view class="section-desc">根据方剂组成关联关系，统计出现频率最高的药材。</view>
+    <view wx:if="{{!formulaHerbTopList.length && !loading}}" class="status-panel">暂无排行数据</view>
+    <view wx:for="{{formulaHerbTopList}}" wx:key="name" class="rank-row">
+      <view class="rank-index">{{index + 1}}</view>
+      <view class="rank-content">
+        <view class="bar-row__header">
+          <view class="bar-row__label">{{item.name}}</view>
+          <view class="bar-row__value">{{item.value}}</view>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill bar-fill--rose" style="width: {{item.percent}}%;"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="status-panel">正在计算可视化数据...</view>
+</view>

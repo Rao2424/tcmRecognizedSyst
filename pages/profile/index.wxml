@@ -1,0 +1,102 @@
+<view class="page-shell profile-page">
+  <view class="hero-card glass-card">
+    <view class="hero-card__top">
+      <view class="avatar-badge">草</view>
+      <view class="hero-card__content">
+        <view class="hero-kicker">我的空间</view>
+        <view class="page-title">{{projectName}}</view>
+        <view class="page-subtitle">
+          把中药材、方剂、分析和拍照识别入口收进一个更像常见小程序个人中心的页面，浏览路径更自然。
+        </view>
+      </view>
+    </view>
+
+    <view class="stats-grid">
+      <view class="stat-card">
+        <view class="stat-card__label">药材库</view>
+        <view class="stat-card__value">{{overview.herbCount}}</view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-card__label">方剂库</view>
+        <view class="stat-card__value">{{overview.formulaCount}}</view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-card__label">分类集</view>
+        <view class="stat-card__value">{{overview.categoryCount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
+      <view class="section-title">常用功能</view>
+      <view class="section-note">高频入口放在第一屏</view>
+    </view>
+
+    <view class="shortcut-grid">
+      <view
+        wx:for="{{shortcutCards}}"
+        wx:key="title"
+        class="shortcut-card glass-card shortcut-card--{{item.tone}}"
+        data-mode="{{item.mode}}"
+        data-target="{{item.target}}"
+        bindtap="openShortcut"
+      >
+        <view class="shortcut-card__badge">{{item.badge}}</view>
+        <view class="shortcut-card__title">{{item.title}}</view>
+        <view class="shortcut-card__desc">{{item.desc}}</view>
+        <view class="shortcut-card__arrow">查看 ></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section glass-card utility-panel">
+    <view class="section-head">
+      <view class="section-title">学习记录</view>
+      <view class="section-note">按小程序习惯预留常用位</view>
+    </view>
+
+    <view
+      wx:for="{{serviceCards}}"
+      wx:for-index="index"
+      wx:key="title"
+      class="service-row {{index === 0 ? 'service-row--first' : ''}}"
+      data-title="{{item.title}}"
+      bindtap="showPlannedFeature"
+    >
+      <view class="service-row__main">
+        <view class="service-row__title">{{item.title}}</view>
+        <view class="service-row__desc">{{item.desc}}</view>
+      </view>
+      <view class="service-row__side">
+        <view class="service-row__meta">{{item.meta}}</view>
+        <view class="service-row__arrow">></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section glass-card project-panel">
+    <view class="section-head">
+      <view class="section-title">项目状态</view>
+      <view class="section-note">当前版本摘要</view>
+    </view>
+
+    <view class="tag-row">
+      <view wx:for="{{statusTags}}" wx:key="*this" class="status-tag">{{item}}</view>
+    </view>
+
+    <view class="info-block" bindtap="copyApiBase">
+      <view class="info-block__label">后端地址</view>
+      <view class="info-block__value">{{apiBaseUrl || "未配置，点击此处可在配置完成后复制"}}</view>
+    </view>
+
+    <view class="summary-card">
+      <view class="summary-card__title">当前定位</view>
+      <view class="summary-card__desc">
+        轻量化中医药查询原型，覆盖药材、方剂、统计分析和识别预留入口，适合课程演示与答辩展示。
+      </view>
+    </view>
+
+    <view wx:if="{{errorText}}" class="status-panel status-panel--error">{{errorText}}</view>
+  </view>
+</view>

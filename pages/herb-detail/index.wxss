@@ -1,0 +1,22 @@
+.detail-hero,
+.detail-card {
+  margin-top: 24rpx;
+  padding: 30rpx;
+}
+
+.detail-label {
+  display: inline-flex;
+  margin-bottom: 16rpx;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(34, 71, 63, 0.1);
+  color: #22473f;
+  font-size: 22rpx;
+}
+
+.detail-line {
+  margin-top: 18rpx;
+  color: #6d675c;
+  font-size: 27rpx;
+  line-height: 1.8;
+}

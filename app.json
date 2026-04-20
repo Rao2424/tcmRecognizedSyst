@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/query/index",
+    "pages/analysis/index",
+    "pages/profile/index",
+    "pages/herb-detail/index",
+    "pages/formula-detail/index",
+    "pages/recognition/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "本草视界",
+    "navigationBarBackgroundColor": "#F6F0E4",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F6F0E4",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7B7366",
+    "selectedColor": "#22473F",
+    "backgroundColor": "#FFF9F0",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/query/index",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/analysis/index",
+        "text": "分析"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

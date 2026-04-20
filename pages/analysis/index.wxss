@@ -1,0 +1,97 @@
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18rpx;
+  margin-top: 28rpx;
+}
+
+.overview-tile {
+  padding: 24rpx 20rpx;
+}
+
+.overview-tile__label {
+  color: #7b7366;
+  font-size: 22rpx;
+}
+
+.overview-tile__value {
+  margin-top: 12rpx;
+  color: #17342d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 48rpx;
+  font-weight: 700;
+}
+
+.chart-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+}
+
+.bar-row {
+  margin-top: 22rpx;
+}
+
+.bar-row__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 12rpx;
+}
+
+.bar-row__label {
+  color: #244038;
+  font-size: 26rpx;
+}
+
+.bar-row__value {
+  color: #7c7468;
+  font-size: 24rpx;
+}
+
+.bar-track {
+  height: 18rpx;
+  border-radius: 999rpx;
+  background: #eee2cb;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 999rpx;
+}
+
+.bar-fill--green {
+  background: linear-gradient(90deg, #22473f 0%, #4f7f73 100%);
+}
+
+.bar-fill--gold {
+  background: linear-gradient(90deg, #a86b28 0%, #cf9954 100%);
+}
+
+.bar-fill--rose {
+  background: linear-gradient(90deg, #915b4a 0%, #be826a 100%);
+}
+
+.rank-row {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 22rpx;
+}
+
+.rank-index {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 18rpx;
+  background: #f0e3cb;
+  color: #244038;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26rpx;
+  font-weight: 700;
+  line-height: 52rpx;
+  text-align: center;
+}
+
+.rank-content {
+  flex: 1;
+}

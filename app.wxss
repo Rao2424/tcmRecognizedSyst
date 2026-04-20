@@ -1,0 +1,104 @@
+page {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top right, #efe1bc 0%, rgba(239, 225, 188, 0) 34%),
+    linear-gradient(180deg, #f8f2e7 0%, #f3eadb 50%, #efe6d8 100%);
+  color: #243b33;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 28rpx 28rpx 180rpx;
+  box-sizing: border-box;
+}
+
+.page-title {
+  margin-bottom: 10rpx;
+  color: #17342d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 52rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.page-subtitle {
+  color: #6d6a60;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+
+.glass-card {
+  background: rgba(255, 249, 240, 0.88);
+  border: 2rpx solid rgba(34, 71, 63, 0.08);
+  border-radius: 32rpx;
+  box-shadow: 0 18rpx 50rpx rgba(62, 51, 35, 0.08);
+}
+
+.section-title {
+  margin: 0 0 20rpx;
+  color: #17342d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.section-desc {
+  margin-bottom: 24rpx;
+  color: #7a756b;
+  font-size: 24rpx;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.chip {
+  padding: 12rpx 24rpx;
+  background: #f1e7d3;
+  border: 1rpx solid rgba(34, 71, 63, 0.12);
+  border-radius: 999rpx;
+  color: #365249;
+  font-size: 24rpx;
+}
+
+.status-panel {
+  margin-top: 20rpx;
+  padding: 24rpx;
+  border-radius: 24rpx;
+  background: rgba(245, 237, 221, 0.85);
+  color: #776f61;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.status-panel--error {
+  background: rgba(250, 228, 221, 0.95);
+  color: #8d4a3b;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #22473f 0%, #2e5e53 100%);
+  color: #fff9f0;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.outline-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  border: 2rpx solid rgba(34, 71, 63, 0.18);
+  border-radius: 999rpx;
+  color: #22473f;
+  font-size: 28rpx;
+  font-weight: 600;
+}

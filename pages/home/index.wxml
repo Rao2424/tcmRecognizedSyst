@@ -1,0 +1,86 @@
+<view class="page-shell home-page">
+  <view class="hero glass-card">
+    <view class="hero-topline">本草视界</view>
+    <view class="page-title">移动端中医药知识查询站</view>
+    <view class="page-subtitle">
+      以中药材、方剂与数据分析为主线，构建适合小程序使用场景的轻量化查询体验。
+    </view>
+
+    <view class="search-panel">
+      <input
+        class="search-input"
+        placeholder="输入药材、方剂或功效关键词"
+        confirm-type="search"
+        value="{{keyword}}"
+        bindinput="onKeywordInput"
+        bindconfirm="submitSearch"
+      />
+      <view class="search-action" bindtap="submitSearch">立即检索</view>
+    </view>
+  </view>
+
+  <view class="overview-grid">
+    <view class="overview-card glass-card">
+      <view class="overview-label">药材条目</view>
+      <view class="overview-value">{{overview.herbCount}}</view>
+    </view>
+    <view class="overview-card glass-card">
+      <view class="overview-label">方剂条目</view>
+      <view class="overview-value">{{overview.formulaCount}}</view>
+    </view>
+    <view class="overview-card glass-card">
+      <view class="overview-label">分类数量</view>
+      <view class="overview-value">{{overview.categoryCount}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">快捷入口</view>
+    <view class="entry-grid">
+      <view
+        wx:for="{{quickEntries}}"
+        wx:key="title"
+        class="entry-card glass-card entry-card--{{item.tone}}"
+        data-route="{{item.route}}"
+        bindtap="navigateEntry"
+      >
+        <view class="entry-title">{{item.title}}</view>
+        <view class="entry-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section glass-card feature-panel">
+    <view class="section-title">常用药材</view>
+    <view class="section-desc">点击热词可直接跳转到药材查询页。</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{featuredHerbs}}"
+        wx:key="*this"
+        class="chip"
+        data-keyword="{{item}}"
+        data-mode="herb"
+        bindtap="goWithPreset"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="section glass-card feature-panel">
+    <view class="section-title">常见方剂</view>
+    <view class="section-desc">适合作为演示和答辩时的快速体验入口。</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{featuredFormulas}}"
+        wx:key="*this"
+        class="chip"
+        data-keyword="{{item}}"
+        data-mode="formula"
+        bindtap="goWithPreset"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+</view>

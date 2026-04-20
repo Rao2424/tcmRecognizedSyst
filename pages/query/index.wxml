@@ -1,0 +1,81 @@
+<view class="page-shell">
+  <view class="page-title">中医药查询台</view>
+  <view class="page-subtitle">切换中药材与方剂视角，使用关键词快速定位需要的信息。</view>
+
+  <view class="mode-switch glass-card">
+    <view
+      class="mode-item {{mode === 'herb' ? 'mode-item--active' : ''}}"
+      data-mode="herb"
+      bindtap="switchMode"
+    >
+      中药材
+    </view>
+    <view
+      class="mode-item {{mode === 'formula' ? 'mode-item--active' : ''}}"
+      data-mode="formula"
+      bindtap="switchMode"
+    >
+      方剂
+    </view>
+  </view>
+
+  <view class="search-box glass-card">
+    <input
+      class="search-input"
+      placeholder="{{mode === 'herb' ? '搜索药材名称、别名或功效' : '搜索方剂名称、功效或主治'}}"
+      confirm-type="search"
+      value="{{keyword}}"
+      bindinput="onKeywordInput"
+      bindconfirm="submitSearch"
+    />
+    <view class="primary-button search-button" bindtap="submitSearch">查询</view>
+  </view>
+
+  <view class="section glass-card quick-filter">
+    <view class="section-title">快捷标签</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{quickTags}}"
+        wx:key="*this"
+        class="chip"
+        data-keyword="{{item}}"
+        bindtap="useQuickTag"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="result-meta">
+    <view class="result-meta__title">{{mode === 'herb' ? '药材结果' : '方剂结果'}}</view>
+    <view class="result-meta__count">共 {{total}} 条</view>
+  </view>
+
+  <view wx:if="{{errorText}}" class="status-panel status-panel--error">{{errorText}}</view>
+
+  <view wx:if="{{!errorText && !loading && !list.length}}" class="status-panel">
+    当前没有查询结果，可以试试首页的推荐词。
+  </view>
+
+  <view class="result-list">
+    <view
+      wx:for="{{list}}"
+      wx:key="id"
+      class="result-card glass-card"
+      data-id="{{item.id}}"
+      bindtap="openDetail"
+    >
+      <view class="result-card__top">
+        <view class="result-card__title">{{item.name}}</view>
+        <view class="result-card__tag">{{mode === 'herb' ? '药材' : '方剂'}}</view>
+      </view>
+      <view wx:if="{{item.alias}}" class="result-card__alias">别名：{{item.alias}}</view>
+      <view wx:if="{{item.categoryName}}" class="result-card__meta">分类：{{item.categoryName}}</view>
+      <view wx:if="{{item.efficacy}}" class="result-card__desc">功效：{{item.efficacy}}</view>
+      <view wx:if="{{item.indication}}" class="result-card__desc">主治：{{item.indication}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="status-panel">正在整理查询结果...</view>
+  <view wx:if="{{!loading && list.length && !hasMore}}" class="status-panel">已经到底了</view>
+</view>

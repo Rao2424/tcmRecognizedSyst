@@ -1,0 +1,37 @@
+<view class="page-shell">
+  <view wx:if="{{loading}}" class="status-panel">正在读取方剂详情...</view>
+  <view wx:if="{{errorText}}" class="status-panel status-panel--error">{{errorText}}</view>
+
+  <block wx:if="{{detail}}">
+    <view class="detail-hero glass-card">
+      <view class="detail-label">方剂档案</view>
+      <view class="page-title">{{detail.name}}</view>
+      <view wx:if="{{detail.categoryName}}" class="page-subtitle">分类：{{detail.categoryName}}</view>
+    </view>
+
+    <view class="detail-card glass-card">
+      <view class="section-title">核心信息</view>
+      <view wx:if="{{detail.efficacy}}" class="detail-line">功效：{{detail.efficacy}}</view>
+      <view wx:if="{{detail.indication}}" class="detail-line">主治：{{detail.indication}}</view>
+      <view wx:if="{{detail.usageMethod}}" class="detail-line">用法用量：{{detail.usageMethod}}</view>
+      <view wx:if="{{detail.sourceText}}" class="detail-line">出处来源：{{detail.sourceText}}</view>
+    </view>
+
+    <view class="detail-card glass-card">
+      <view class="section-title">方剂组成</view>
+      <view wx:if="{{detail.composition}}" class="detail-line">组成描述：{{detail.composition}}</view>
+      <view wx:if="{{detail.herbs && detail.herbs.length}}">
+        <view
+          wx:for="{{detail.herbs}}"
+          wx:key="name"
+          class="herb-pill"
+          data-id="{{item.id}}"
+          bindtap="openHerb"
+        >
+          {{item.name}}{{item.amountDesc ? ' · ' + item.amountDesc : ''}}
+        </view>
+      </view>
+      <view wx:if="{{!detail.herbs || !detail.herbs.length}}" class="status-panel">当前未录入组成药材明细</view>
+    </view>
+  </block>
+</view>

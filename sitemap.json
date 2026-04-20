@@ -1,9 +1,0 @@
-{
-  "desc": "TCM visual query system sitemap",
-  "rules": [
-    {
-      "action": "allow",
-      "page": "*"
-    }
-  ]
-}

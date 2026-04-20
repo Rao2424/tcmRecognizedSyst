@@ -7,6 +7,8 @@
 # WeChat DevTools private local settings
 project.private.config.json
 
+
+
 # Python caches and test artifacts
 __pycache__/
 *.py[cod]
